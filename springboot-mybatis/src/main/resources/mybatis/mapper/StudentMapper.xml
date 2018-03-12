@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.mybatis.dao.mapper.StudentMapper">
+	<resultMap type="com.test.mybatis.bean.po.Student" id="student">
+		<id column="id" property="id" jdbcType="BIGINT"/>
+		<result column="name" property="name" jdbcType="VARCHAR"/>
+		<result column="password" property="password" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="getStudentSubjectScore" resultType="HashMap">
+		SELECT a.id,a.`name`,b.`subject`,b.score FROM student a RIGHT JOIN subject_score b ON a.id = b.sid
+	</select>
+</mapper>
